@@ -7,10 +7,11 @@ using UnityEngine.AI;
 public class EnemyAI : MonoBehaviour
 {
     [SerializeField] Transform target;
-    [SerializeField] float chaseRange = 5f;
+    [SerializeField] float chaseRange = 15f;
 
     NavMeshAgent navMeshAgent;
-    float distanceToTarget;
+
+    bool isProvoked;
 
     void Start()
     {
@@ -29,14 +30,35 @@ public class EnemyAI : MonoBehaviour
 
     void Update()
     {
-        if (IsTargetInRange())
+        if (isProvoked)
         {
-            Chase();
+            EngageTarget();
+        }
+        else if (IsTargetInRange())
+        {
+            isProvoked = true;
         }
         else
         {
             Patrol();
         }
+    }
+
+    private void EngageTarget()
+    {
+        if (DistanceToTarget() > navMeshAgent.stoppingDistance)
+        {
+            Chase();
+        }
+        else
+        {
+            Attack();
+        }
+    }
+
+    private void Attack()
+    {
+        Debug.Log(name + " is attacking " + target.name);
     }
 
     private void Patrol()
