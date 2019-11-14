@@ -38,10 +38,6 @@ public class EnemyAI : MonoBehaviour
         {
             isProvoked = true;
         }
-        else
-        {
-            Patrol();
-        }
     }
 
     private void EngageTarget()
@@ -61,16 +57,8 @@ public class EnemyAI : MonoBehaviour
         Debug.Log(name + " is attacking " + target.name);
     }
 
-    private void Patrol()
-    {
-        navMeshAgent.isStopped = true;
-        float yRotation = Mathf.Sin(Time.time/4) * 180 ;
-        transform.localRotation = Quaternion.Euler(0, yRotation, 0);
-    }
-
     private void Chase()
     {
-        navMeshAgent.isStopped = false;
         navMeshAgent.SetDestination(target.position);
     }
 
