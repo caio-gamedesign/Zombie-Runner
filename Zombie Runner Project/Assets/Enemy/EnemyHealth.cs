@@ -7,17 +7,27 @@ public class EnemyHealth : MonoBehaviour
 {
     [SerializeField] float healthAmount = 100f;
 
+    EnemyAI enemyAI;
+
+    private void Start()
+    {
+        enemyAI = GetComponent<EnemyAI>();
+    }
+
+
+
     public void Damage(float damageAmount)
     {
-        Debug.Log(damageAmount);
         if (damageAmount > 0)
         {
             healthAmount -= damageAmount;
-        }
 
-        if (healthAmount <= 0)
-        {
-            Die();
+            enemyAI.Provoke();
+
+            if (healthAmount <= 0)
+            {
+                Die();
+            }
         }
     }
 

@@ -14,6 +14,11 @@ public class EnemyAI : MonoBehaviour
 
     bool isProvoked;
 
+    public void Provoke()
+    {
+        isProvoked = true;
+    }
+
     void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
@@ -57,7 +62,6 @@ public class EnemyAI : MonoBehaviour
     private void Attack()
     {
         animator.SetBool("attack", true);
-        Debug.Log(name + " is attacking " + target.name);
     }
 
     private void Chase()
