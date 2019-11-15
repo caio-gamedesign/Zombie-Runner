@@ -11,9 +11,25 @@ public class Weapon : MonoBehaviour
     [SerializeField] ParticleSystem muzzleFlash;
     [SerializeField] GameObject hitEffect;
 
+    WeaponZoom weaponZoom;
+
+    private void Start()
+    {
+        weaponZoom = GetComponent<WeaponZoom>();
+    }
+
     void Update()
     {
-        if(Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire2"))
+        {
+            weaponZoom.FOVZoomIn();
+        }
+        else if (Input.GetButtonUp("Fire2"))
+        {
+            weaponZoom.FOVZoomOut();
+        }
+
+        if (Input.GetButtonDown("Fire1"))
         {
             Shoot();
         }

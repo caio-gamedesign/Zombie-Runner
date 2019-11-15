@@ -3792,6 +3792,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000,
         type: 0}
+    - target: {fileID: 2000000, guid: c6453f8e1f814744d8b94e5a6d1f9942, type: 3}
+      propertyPath: field of view
+      value: 60
+      objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: c6453f8e1f814744d8b94e5a6d1f9942, type: 3}
       propertyPath: m_LocalPosition.x
       value: -24.98
@@ -4497,6 +4501,29 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1953859298}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1960436957 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7075749623169984957, guid: c6453f8e1f814744d8b94e5a6d1f9942,
+    type: 3}
+  m_PrefabInstance: {fileID: 1450360535}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1960436962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1960436957}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ff8b48579b55114e8ea2911dd0c7943, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camera: {fileID: 682408431}
+  fovZoomIn: 20
+  fovZoomOut: 60
+  fovZoomInSensitivity: 0.2
+  fovZoomOutSensitivity: 2
 --- !u!1 &2015202240
 GameObject:
   m_ObjectHideFlags: 0
