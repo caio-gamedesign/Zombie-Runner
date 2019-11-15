@@ -6,10 +6,11 @@ using UnityEngine;
 public class PlayerHealth : MonoBehaviour
 {
     [SerializeField] float healthAmount = 100f;
+    bool isAlive = true;
 
     public void Damage(int damage)
     {
-        if (damage > 0)
+        if (damage > 0 && isAlive)
         {
             healthAmount -= damage;
 
@@ -23,6 +24,7 @@ public class PlayerHealth : MonoBehaviour
 
     private void Die()
     {
-        Debug.Log("You Died");
+        isAlive = false;
+        GetComponent<DeathHandler>().HandleDeath();
     }
 }
