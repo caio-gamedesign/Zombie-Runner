@@ -12,6 +12,9 @@ public class Weapon : MonoBehaviour
     [SerializeField] GameObject hitEffect;
     [SerializeField] Ammo ammoSlot;
 
+    [SerializeField] float secondsBetweenShots;
+    private float lastShotTime = 0f;
+
     WeaponZoom weaponZoom;
 
     private void Start()
@@ -39,10 +42,18 @@ public class Weapon : MonoBehaviour
         }
     }
 
+    private bool CanFire()
+    {
+        float deltaShotTime = Time.time - lastShotTime;
+
+        return ammoSlot.Amount > 0 && deltaShotTime >= secondsBetweenShots;
+    }
+
     private void Shoot()
     {
-        if (ammoSlot.Amount > 0)
+        if (CanFire()) 
         {
+            lastShotTime = Time.time;
             ammoSlot.ReduceAmmo();
             PlayMuzzleFlash();
             ProcessRayCast();
