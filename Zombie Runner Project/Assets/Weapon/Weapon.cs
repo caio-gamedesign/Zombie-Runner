@@ -10,6 +10,7 @@ public class Weapon : MonoBehaviour
     [SerializeField] float range = 100f;
     [SerializeField] ParticleSystem muzzleFlash;
     [SerializeField] GameObject hitEffect;
+    [SerializeField] Ammo ammoSlot;
 
     WeaponZoom weaponZoom;
 
@@ -20,32 +21,43 @@ public class Weapon : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButtonDown("Fire2"))
+        if (Time.timeScale != 0)
         {
-            weaponZoom.FOVZoomIn();
-        }
-        else if (Input.GetButtonUp("Fire2"))
-        {
-            weaponZoom.FOVZoomOut();
-        }
+            if (Input.GetButtonDown("Fire2"))
+            {
+                weaponZoom.FOVZoomIn();
+            }
+            else if (Input.GetButtonUp("Fire2"))
+            {
+                weaponZoom.FOVZoomOut();
+            }
 
-        if (Input.GetButtonDown("Fire1"))
-        {
-            Shoot();
+            if (Input.GetButtonDown("Fire1"))
+            {
+                Shoot();
+            }
         }
     }
 
     private void Shoot()
     {
-        PlayMuzzleFlash();
+        if (ammoSlot.Amount > 0)
+        {
+            ammoSlot.ReduceAmmo();
+            PlayMuzzleFlash();
+            ProcessRayCast();
+        }
+    }
 
+    private void ProcessRayCast()
+    {
         RaycastHit hit;
-        if(Physics.Raycast(fpsCamera.transform.position, fpsCamera.transform.forward, out hit, range))
+        if (Physics.Raycast(fpsCamera.transform.position, fpsCamera.transform.forward, out hit, range))
         {
             CreateHitImpact(hit);
 
             if (hit.transform.CompareTag("Enemy"))
-            {  
+            {
                 hit.transform.GetComponent<EnemyHealth>().Damage(damage);
             }
         }
