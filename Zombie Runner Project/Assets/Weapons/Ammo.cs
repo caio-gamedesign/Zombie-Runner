@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -18,9 +19,19 @@ public class Ammo : MonoBehaviour
         return GetAmmoSlot(ammoType).ammoAmount;
     }
 
-    public void ReduceAmmo(AmmoType ammoType)
+    internal void GetPickUp(AmmoType ammoType, int ammoAmount)
     {
-        GetAmmoSlot(ammoType).ammoAmount--;
+        IncreaseAmmo(ammoType, ammoAmount);
+    }
+
+    public void IncreaseAmmo(AmmoType ammoType, int amount = 1)
+    {
+        GetAmmoSlot(ammoType).ammoAmount += amount;
+    }
+
+    public void ReduceAmmo(AmmoType ammoType, int amount = 1)
+    {
+        GetAmmoSlot(ammoType).ammoAmount -= amount;
     }
 
     private AmmoSlot GetAmmoSlot(AmmoType ammoType)
