@@ -49,11 +49,11 @@ public class WeaponSwitcher : MonoBehaviour
     private void ProcessScroll()
     {
         float scrollInput = Input.GetAxis("Mouse ScrollWheel");
-        if (scrollInput > 0)
+        if (scrollInput < 0)
         {
             SetWeaponActive(NextWeapon());
         }
-        else if (scrollInput < 0)
+        else if (scrollInput > 0)
         {
             SetWeaponActive(PreviousWeapon());
         }

@@ -14,7 +14,7 @@ public class WeaponZoom : MonoBehaviour
 
     RigidbodyFirstPersonController fpsController;
 
-    private void Start()
+    private void Awake()
     {
         fpsController = transform.root.GetComponent<RigidbodyFirstPersonController>();
     }

@@ -6,27 +6,30 @@ using UnityEngine;
 public class Weapon : MonoBehaviour
 {
     [SerializeField] Camera fpsCamera;
-    [Range(1,100)][SerializeField] int damage = 25;
+    [Range(1, 100)] [SerializeField] int damage = 25;
     [SerializeField] float range = 100f;
     [SerializeField] ParticleSystem muzzleFlash;
     [SerializeField] GameObject hitEffect;
-    [SerializeField] Ammo ammoSlot;
+    [SerializeField] Ammo ammo;
 
     [SerializeField] float secondsBetweenShots;
     private float lastShotTime = 0f;
 
     WeaponZoom weaponZoom;
 
-    private void Start()
+    [SerializeField] AmmoType ammoType;
+
+    private void Awake()
     {
         weaponZoom = GetComponent<WeaponZoom>();
+        ammo = transform.root.GetComponent<Ammo>();
     }
 
     void Update()
     {
         if (Time.timeScale != 0)
         {
-            if (Input.GetButton("Fire2"))
+            if (Input.GetButtonDown("Fire2"))
             {
                 weaponZoom.FOVZoomIn();
             }
@@ -42,21 +45,31 @@ public class Weapon : MonoBehaviour
         }
     }
 
+    private void OnDisable()
+    {
+        weaponZoom.FOVZoomOut();
+    }
+
     private bool CanFire()
     {
         float deltaShotTime = Time.time - lastShotTime;
+        bool isOnFireRate = deltaShotTime >= secondsBetweenShots;
 
-        return ammoSlot.Amount > 0 && deltaShotTime >= secondsBetweenShots;
+        bool hasAmmo = ammo.Amount(ammoType) > 0;
+
+        return isOnFireRate && hasAmmo;
     }
 
     private void Shoot()
     {
-        if (CanFire()) 
+        if (CanFire())
         {
             lastShotTime = Time.time;
-            ammoSlot.ReduceAmmo();
+
             PlayMuzzleFlash();
             ProcessRayCast();
+
+            ammo.ReduceAmmo(ammoType);
         }
     }
 
