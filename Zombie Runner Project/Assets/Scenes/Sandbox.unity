@@ -72,7 +72,7 @@ LightmapSettings:
     m_FinalGatherRayCount: 256
     m_ReflectionCompression: 2
     m_MixedBakeMode: 2
-    m_BakeBackend: 1
+    m_BakeBackend: 2
     m_PVRSampling: 1
     m_PVRDirectSampleCount: 32
     m_PVRSampleCount: 500
@@ -3872,7 +3872,7 @@ PrefabInstance:
     - target: {fileID: 4772933760599550549, guid: f96cee75cef249940a81957ce18d3ec6,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 29.6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4772933760599550549, guid: f96cee75cef249940a81957ce18d3ec6,
         type: 3}
@@ -3882,7 +3882,7 @@ PrefabInstance:
     - target: {fileID: 4772933760599550549, guid: f96cee75cef249940a81957ce18d3ec6,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 27.7
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 4772933760599550549, guid: f96cee75cef249940a81957ce18d3ec6,
         type: 3}

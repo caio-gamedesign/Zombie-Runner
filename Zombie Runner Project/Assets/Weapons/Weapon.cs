@@ -26,7 +26,7 @@ public class Weapon : MonoBehaviour
     {
         if (Time.timeScale != 0)
         {
-            if (Input.GetButtonDown("Fire2"))
+            if (Input.GetButton("Fire2"))
             {
                 weaponZoom.FOVZoomIn();
             }
@@ -35,7 +35,7 @@ public class Weapon : MonoBehaviour
                 weaponZoom.FOVZoomOut();
             }
 
-            if (Input.GetButtonDown("Fire1"))
+            if (Input.GetButton("Fire1"))
             {
                 Shoot();
             }

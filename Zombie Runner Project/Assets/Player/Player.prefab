@@ -338,6 +338,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3323612843646420904}
+  - component: {fileID: 6787891201609753328}
   m_Layer: 0
   m_Name: Weapons
   m_TagString: Untagged
@@ -362,6 +363,18 @@ Transform:
   m_Father: {fileID: 1092051695763996752}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6787891201609753328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7070321312304718552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: def6f5d1208d13a429b01f0fa4eaa037, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1092051695677174160
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -429,6 +442,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 4403754213367454029, guid: 6891a1e1f39b66f4ea5266ff8ff3bafa,
+        type: 3}
+      propertyPath: camera
+      value: 
+      objectReference: {fileID: 1092051695765610064}
+    - target: {fileID: 4403754213367454029, guid: 6891a1e1f39b66f4ea5266ff8ff3bafa,
+        type: 3}
+      propertyPath: fovZoomIn
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4403754213367454029, guid: 6891a1e1f39b66f4ea5266ff8ff3bafa,
+        type: 3}
+      propertyPath: fovZoomInSensitivity
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4403754213367454064, guid: 6891a1e1f39b66f4ea5266ff8ff3bafa,
+        type: 3}
+      propertyPath: amount
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 7820687702675372849, guid: 6891a1e1f39b66f4ea5266ff8ff3bafa,
         type: 3}
       propertyPath: fpsCamera
@@ -448,26 +481,6 @@ PrefabInstance:
         type: 3}
       propertyPath: secondsBetweenShots
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4403754213367454064, guid: 6891a1e1f39b66f4ea5266ff8ff3bafa,
-        type: 3}
-      propertyPath: amount
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 4403754213367454029, guid: 6891a1e1f39b66f4ea5266ff8ff3bafa,
-        type: 3}
-      propertyPath: camera
-      value: 
-      objectReference: {fileID: 1092051695765610064}
-    - target: {fileID: 4403754213367454029, guid: 6891a1e1f39b66f4ea5266ff8ff3bafa,
-        type: 3}
-      propertyPath: fovZoomIn
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 4403754213367454029, guid: 6891a1e1f39b66f4ea5266ff8ff3bafa,
-        type: 3}
-      propertyPath: fovZoomInSensitivity
-      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6891a1e1f39b66f4ea5266ff8ff3bafa, type: 3}
@@ -544,6 +557,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 4403754213367454029, guid: f5b85b9898c6c304ca19c468fbc0eff8,
+        type: 3}
+      propertyPath: camera
+      value: 
+      objectReference: {fileID: 1092051695765610064}
     - target: {fileID: 7820687702675372849, guid: f5b85b9898c6c304ca19c468fbc0eff8,
         type: 3}
       propertyPath: fpsCamera
@@ -554,11 +572,6 @@ PrefabInstance:
       propertyPath: secondsBetweenShots
       value: 0.25
       objectReference: {fileID: 0}
-    - target: {fileID: 4403754213367454029, guid: f5b85b9898c6c304ca19c468fbc0eff8,
-        type: 3}
-      propertyPath: camera
-      value: 
-      objectReference: {fileID: 1092051695765610064}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f5b85b9898c6c304ca19c468fbc0eff8, type: 3}
 --- !u!4 &7860368976416042829 stripped
