@@ -344,11 +344,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ammoSlots:
   - ammoType: 0
-    ammoAmount: 10
+    ammoAmount: 30
   - ammoType: 1
     ammoAmount: 20
   - ammoType: 2
-    ammoAmount: 30
+    ammoAmount: 10
 --- !u!1 &7070321312304718552
 GameObject:
   m_ObjectHideFlags: 0
@@ -478,11 +478,6 @@ PrefabInstance:
       propertyPath: fovZoomInSensitivity
       value: 0.1
       objectReference: {fileID: 0}
-    - target: {fileID: 4403754213367454064, guid: 6891a1e1f39b66f4ea5266ff8ff3bafa,
-        type: 3}
-      propertyPath: amount
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 7820687702675372849, guid: 6891a1e1f39b66f4ea5266ff8ff3bafa,
         type: 3}
       propertyPath: fpsCamera
@@ -502,6 +497,11 @@ PrefabInstance:
         type: 3}
       propertyPath: secondsBetweenShots
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4403754213367454064, guid: 6891a1e1f39b66f4ea5266ff8ff3bafa,
+        type: 3}
+      propertyPath: amount
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6891a1e1f39b66f4ea5266ff8ff3bafa, type: 3}
@@ -688,11 +688,6 @@ PrefabInstance:
       propertyPath: secondsBetweenShots
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 4403754213367454064, guid: 87fd73f1e38e8354cad0082772319914,
-        type: 3}
-      propertyPath: amount
-      value: 6
-      objectReference: {fileID: 0}
     - target: {fileID: 4403754213367454029, guid: 87fd73f1e38e8354cad0082772319914,
         type: 3}
       propertyPath: camera
@@ -702,6 +697,11 @@ PrefabInstance:
         type: 3}
       propertyPath: fovZoomIn
       value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 4403754213367454064, guid: 87fd73f1e38e8354cad0082772319914,
+        type: 3}
+      propertyPath: amount
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 87fd73f1e38e8354cad0082772319914, type: 3}

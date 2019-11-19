@@ -9,22 +9,25 @@ public class EnemyHealth : MonoBehaviour
 
     EnemyAI enemyAI;
 
+    public bool IsAlive()
+    {
+        return healthAmount > 0;
+    }
+
     private void Start()
     {
         enemyAI = GetComponent<EnemyAI>();
     }
 
-
-
     public void Damage(float damageAmount)
     {
-        if (damageAmount > 0)
+        if (IsAlive() && damageAmount > 0)
         {
             healthAmount -= damageAmount;
 
             enemyAI.Provoke();
 
-            if (healthAmount <= 0)
+            if (IsAlive() == false)
             {
                 Die();
             }
@@ -33,6 +36,6 @@ public class EnemyHealth : MonoBehaviour
 
     private void Die()
     {
-        gameObject.SetActive(false);
+        enemyAI.Die();
     }
 }

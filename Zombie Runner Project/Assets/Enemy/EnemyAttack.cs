@@ -7,9 +7,9 @@ public class EnemyAttack : MonoBehaviour
     [SerializeField] Transform target;
     [SerializeField] int damage = 40;
 
-    void Start()
+    private void Start()
     {
-        
+        target = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     public void AttackHitEvent()

@@ -6,7 +6,7 @@ using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour
 {
-    [SerializeField] Transform target;
+    Transform target;
     [SerializeField] float chaseRange = 15f;
 
     NavMeshAgent navMeshAgent;
@@ -24,16 +24,12 @@ public class EnemyAI : MonoBehaviour
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
+        target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
     }
 
     bool IsTargetInRange()
     {
-        return DistanceToTarget() <= chaseRange;
-    }
-
-    float DistanceToTarget()
-    {
-        return Vector3.Distance(target.position, transform.position);
+        return HorizontalDistanceSq() <= (chaseRange * chaseRange);
     }
 
     void Update()
@@ -44,21 +40,36 @@ public class EnemyAI : MonoBehaviour
         }
         else if (IsTargetInRange())
         {
-            isProvoked = true;
+            Provoke();
         }
     }
 
     private void EngageTarget()
     {
         FaceTarget();
-        if (DistanceToTarget() > navMeshAgent.stoppingDistance)
-        {
-            Chase();
-        }
-        else
+        if (IsInAttackRange())
         {
             Attack();
         }
+        else
+        {
+            Chase();
+        }
+    }
+
+    private float HorizontalDistanceSq()
+    {
+        float xDist = target.position.x - transform.position.x;
+        float zDist = target.position.z - transform.position.z;
+
+        return (xDist * xDist) + (zDist * zDist);
+    }
+
+    private bool IsInAttackRange()
+    {
+        float horizontalRange = navMeshAgent.stoppingDistance;
+
+        return HorizontalDistanceSq() <= (horizontalRange * horizontalRange);
     }
 
     private void FaceTarget()
@@ -71,6 +82,18 @@ public class EnemyAI : MonoBehaviour
     private void Attack()
     {
         animator.SetBool("attack", true);
+    }
+
+    public void Die()
+    {
+        animator.SetTrigger("die");
+        navMeshAgent.isStopped = true;
+    }
+
+    public void DeatchZombieCorpse()
+    {
+        transform.DetachChildren();
+        Destroy(gameObject);
     }
 
     private void Chase()
