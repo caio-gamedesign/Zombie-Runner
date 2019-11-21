@@ -11,7 +11,7 @@ public class Pickup : MonoBehaviour
     {
         if(other.CompareTag("Player"))
         {
-            other.transform.GetComponent<Ammo>().GetPickUp(ammoType, ammoAmount);
+            other.GetComponent<Ammo>().GetPickUp(ammoType, ammoAmount);
             gameObject.SetActive(false);
         }
     }
