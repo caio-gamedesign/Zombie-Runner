@@ -7,18 +7,24 @@ public class PlayerHealth : MonoBehaviour
 {
     [SerializeField] float healthAmount = 100f;
     bool isAlive = true;
+    DisplayDamage displayDamage;
 
-    public void Damage(int damage)
+    private void Start()
+    {
+        displayDamage = GetComponent<DisplayDamage>();
+    }
+
+    public void Damage(int damage, string direction = "")
     {
         if (damage > 0 && isAlive)
         {
+            displayDamage.ShowDamage(direction);
             healthAmount -= damage;
 
             if (healthAmount <= 0)
             {
                 Die();
             }
-
         }
     }
 
