@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Ammo : MonoBehaviour
 {
@@ -12,6 +13,13 @@ public class Ammo : MonoBehaviour
     {
         public AmmoType ammoType;
         public int ammoAmount;
+    }
+
+    [SerializeField] TextMeshProUGUI ammoDisplay;
+
+    public void UpdateAmmoDisplay(AmmoType ammoType)
+    {
+        ammoDisplay.text = Amount(ammoType).ToString();
     }
 
     public int Amount (AmmoType ammoType)
@@ -27,11 +35,13 @@ public class Ammo : MonoBehaviour
     public void IncreaseAmmo(AmmoType ammoType, int amount = 1)
     {
         GetAmmoSlot(ammoType).ammoAmount += amount;
+        UpdateAmmoDisplay(ammoType);
     }
 
     public void ReduceAmmo(AmmoType ammoType, int amount = 1)
     {
         GetAmmoSlot(ammoType).ammoAmount -= amount;
+        UpdateAmmoDisplay(ammoType);
     }
 
     private AmmoSlot GetAmmoSlot(AmmoType ammoType)

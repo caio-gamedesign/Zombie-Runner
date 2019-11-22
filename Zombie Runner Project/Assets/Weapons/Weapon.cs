@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Weapon : MonoBehaviour
 {
@@ -17,7 +18,7 @@ public class Weapon : MonoBehaviour
 
     WeaponZoom weaponZoom;
 
-    [SerializeField] AmmoType ammoType;
+    [SerializeField] AmmoType ammoType;    
 
     private void Awake()
     {
@@ -43,6 +44,11 @@ public class Weapon : MonoBehaviour
                 Shoot();
             }
         }
+    }
+
+    private void OnEnable()
+    {
+        ammo.UpdateAmmoDisplay(ammoType);
     }
 
     private void OnDisable()

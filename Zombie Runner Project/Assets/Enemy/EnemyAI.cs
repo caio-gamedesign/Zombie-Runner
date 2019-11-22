@@ -92,7 +92,15 @@ public class EnemyAI : MonoBehaviour
 
     public void DeatchZombieCorpse()
     {
-        transform.DetachChildren();
+        Transform corpseParent = null;
+
+        if(transform.root != transform)
+        {
+            corpseParent = transform.root;
+        }
+
+        transform.GetChild(0).SetParent(corpseParent);
+
         Destroy(gameObject);
     }
 
